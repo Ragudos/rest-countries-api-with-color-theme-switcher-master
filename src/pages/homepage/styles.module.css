@@ -1,0 +1,9 @@
+.filterContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    position: sticky;
+    top: 10rem;
+}

@@ -1,0 +1,29 @@
+.header {
+    top: 0;
+    position: sticky;
+
+    z-index: 40;
+
+    padding-block: 2rem;
+
+    background-color: hsl(var(--clr-background-offset));
+
+    box-shadow: 0px 4px 12px hsl(0 0% 0% / 0.275);
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.a {
+    height: 100%;
+    font-size: inherit;
+    padding: 0;
+}
+
+.button {
+    gap: 0.5rem;
+}

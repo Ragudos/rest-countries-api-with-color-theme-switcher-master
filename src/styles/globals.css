@@ -1,0 +1,239 @@
+:root {
+    --clr-dark-blue-800: 200 15% 8%;
+    --clr-white: 0 0% 100%;
+    --clr-gray-100: 0 0% 98%;
+    --clr-gray-500: 0 0% 52%;
+
+    --clr-background: var(--clr-gray-100);
+    --clr-foreground: var(--clr-dark-blue-800);
+    --clr-background-offset: var(--clr-white);
+    --clr-input: var(--clr-gray-500);
+
+    --clr-btn-hover: var(--clr-dark-blue-800);
+
+    --base-font-size: 14px;
+
+    --font-family: "Nunito Sans", system-ui, sans-serif;
+
+    --base-transition-duration: 250ms;
+}
+
+.dark {
+    --clr-dark-blue: 209 23% 22%;
+    --clr-dark-blue-800: 207 26% 17%;
+
+    --clr-btn-hover: var(--clr-gray-500);
+    --clr-background:  var(--clr-dark-blue-800);
+    --clr-background-offset: var(--clr-dark-blue);
+    --clr-foreground: var(--clr-white);
+}
+
+.details-page {
+    --base-font-size: 16px;
+}
+
+*,
+::before,
+::after {
+    box-sizing: inherit;
+
+    margin: 0;
+    padding: 0;
+}
+
+@media only screen and (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+        animation-iteration-count: 1 !important;
+    }
+}
+
+html {
+    font-size: var(--base-font-size);
+    text-rendering: optimizeSpeed;
+    -webkit-text-size-adjust: 100%;
+
+    font-synthesis: none;
+
+    box-sizing: border-box;
+}
+
+body {
+    color: hsl(var(--clr-foreground));
+    background-color: hsl(var(--clr-background));
+
+    font-family: var(--font-family);
+}
+
+.container {
+    max-width: 1400px;
+    padding-inline: 1rem;
+    margin-inline: auto;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button,
+input {
+    background-color: transparent;
+    border: none;
+}
+
+button, a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 0.875rem;
+    font-weight: 300;
+}
+
+button,
+a,
+input,
+select {
+    outline: 
+        var(--_outline-width, 1px)
+        var(--_outline-style, solid)
+        var(--_outline-color, transparent)
+    ;
+
+    box-shadow:
+        var(--_box-shadow, 0 0 0 0),
+        var(--_ring, 0 0 0 0) var(--_clr-ring, transparent),
+        var(--_ring-offset, 0 0 0 0) var(--_clr-ring-offset, transparent)
+    ;
+
+    padding: 0.5rem 1rem;
+
+    transition-property: transform, opacity, color, background-color, box-shadow, outline;
+    will-change: transform, opacity, color, background-color, box-shadow, outline;
+
+    border-radius: 0.5rem;
+
+    transition-duration: var(--base-transition-duration);
+    transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select {
+    --_outline-color: currentColor;
+    --_ring: 0px 0px 0px 4px;
+    --_clr-ring: currentColor;
+    --_ring-offset: 0px 0px 0px 2px;
+    --_clr-ring-offset: hsl(var(--clr-background));
+}
+
+button:hover {
+    background-color: hsl(var(--clr-btn-hover) / 0.25);
+}
+
+button:active,
+a:active {
+    opacity: 0.75;
+}
+
+strong {
+    font-weight: 800;
+}
+
+small {
+    font-weight: 80%;
+}
+
+h1 {
+    font-size: clamp(
+        1.175rem,
+        2px + 2vw,
+        1.75rem
+    );
+}
+
+h2 {
+    font-size: clamp(
+        1rem,
+        2px + 2vw,
+        1.5rem
+    );
+}
+
+.dark svg.fillOnDark {
+    fill: currentColor;
+}
+
+main {
+    padding-block: 3rem;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    text-overflow: clip;
+    padding: 1px;
+    z-index: -1;
+}
+
+img {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+ul {
+    list-style: none;
+}
+
+.bold {
+    font-weight: 800;
+}
+
+.semibold {
+    font-weight: 600;
+}
+
+.skeleton {
+    position: relative;
+    overflow: hidden;
+    background-color: hsl(var(--clr-background-offset));
+}
+
+.skeleton::after {
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+
+    background-image: linear-gradient(
+        90deg,
+        hsl(var(--clr-foreground) / 0) 0,
+        hsl(var(--clr-foreground) / 0.175) 20%,
+        hsl(var(--clr-foreground) / 0.25) 60%,
+        hsl(var(--clr-foreground) / 0)
+    );
+
+    animation: skeleton 2000ms infinite;
+
+    content: "";
+}
+
+@keyframes skeleton {
+    to {
+        transform: translateX(100%);
+    }
+}
