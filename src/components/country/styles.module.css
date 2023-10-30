@@ -15,13 +15,26 @@
     overflow: hidden;
     background-color: hsl(var(--clr-background-offset));
 
+    display: block;
+    padding: 0;
+    height: auto;
+    font-size: 1rem;
+
     box-shadow: 0px 4px 12px hsl(0 0% 0% / 0.25);
+}
+
+.card:hover {
+    opacity: 0.87;
 }
 
 .img {
     width: 100%;
     height: 50%;
     aspect-ratio: 16/9;
+}
+
+.img img {
+    object-fit: fill;
 }
 
 .metadata {

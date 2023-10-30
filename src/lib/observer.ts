@@ -20,7 +20,7 @@ class Observer<T> {
             this.subscribers_length--;
 
             this.subscribers.delete(id);
-        }
+        };
     }
 
     update(newData: T) {

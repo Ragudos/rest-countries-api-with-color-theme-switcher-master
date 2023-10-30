@@ -23,7 +23,7 @@
     --clr-dark-blue-800: 207 26% 17%;
 
     --clr-btn-hover: var(--clr-gray-500);
-    --clr-background:  var(--clr-dark-blue-800);
+    --clr-background: var(--clr-dark-blue-800);
     --clr-background-offset: var(--clr-dark-blue);
     --clr-foreground: var(--clr-white);
 }
@@ -71,7 +71,7 @@ body {
 
 .container {
     max-width: 1400px;
-    padding-inline: 1rem;
+    padding-inline: 2rem;
     margin-inline: auto;
 }
 
@@ -90,7 +90,8 @@ input {
     border: none;
 }
 
-button, a {
+button,
+a {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -103,22 +104,18 @@ button,
 a,
 input,
 select {
-    outline: 
-        var(--_outline-width, 1px)
-        var(--_outline-style, solid)
-        var(--_outline-color, transparent)
-    ;
+    outline: var(--_outline-width, 1px) var(--_outline-style, solid)
+        var(--_outline-color, transparent);
 
     box-shadow:
         var(--_box-shadow, 0 0 0 0),
         var(--_ring, 0 0 0 0) var(--_clr-ring, transparent),
-        var(--_ring-offset, 0 0 0 0) var(--_clr-ring-offset, transparent)
-    ;
+        var(--_ring-offset, 0 0 0 0) var(--_clr-ring-offset, transparent);
 
     padding: 0.5rem 1rem;
 
-    transition-property: transform, opacity, color, background-color, box-shadow, outline;
-    will-change: transform, opacity, color, background-color, box-shadow, outline;
+    transition-property:  opacity, color, background-color, box-shadow, outline;
+    will-change: opacity, background-color, box-shadow;
 
     border-radius: 0.5rem;
 
@@ -155,19 +152,11 @@ small {
 }
 
 h1 {
-    font-size: clamp(
-        1.175rem,
-        2px + 2vw,
-        1.75rem
-    );
+    font-size: clamp(1.75rem, 2px + 2vw, 2.25rem);
 }
 
 h2 {
-    font-size: clamp(
-        1rem,
-        2px + 2vw,
-        1.5rem
-    );
+    font-size: clamp(1.5rem, 2px + 2vw, 2rem);
 }
 
 .dark svg.fillOnDark {
@@ -176,6 +165,8 @@ h2 {
 
 main {
     padding-block: 3rem;
+
+    min-height: 100dvh;
 }
 
 .sr-only {
@@ -236,4 +227,18 @@ ul {
     to {
         transform: translateX(100%);
     }
+}
+
+footer {
+    display: grid;
+    place-items: center;
+}
+
+footer > div {
+    display: flex;
+    gap: 1rem;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }

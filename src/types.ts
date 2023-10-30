@@ -18,7 +18,7 @@ interface Currencies {
     UZS: {
         name: string;
         symbol: string;
-    }
+    };
 }
 
 interface Demonyms {
@@ -29,10 +29,10 @@ interface Demonyms {
     fra: {
         f: string;
         m: string;
-    }
+    };
 }
 
-interface Flags{ 
+interface Flags {
     alt: string;
     png?: string;
     svg?: string;
@@ -67,7 +67,7 @@ interface Country {
     landlocked: boolean;
     languages: {
         [key: string]: string;
-    }
+    };
     latlng: [number, number];
     maps: {
         googleMaps: string;
@@ -78,13 +78,13 @@ interface Country {
         official: string;
         nativeName: {
             [key: string]: string;
-        }
-    }
+        };
+    };
     population: number;
     postalCode: {
         format: string;
         regex: string;
-    }
+    };
     region: string;
     startOfWeek: string;
     status: string;
@@ -95,11 +95,9 @@ interface Country {
         [key: string]: {
             official: string;
             common: string;
-        }
+        };
     };
     unMember: boolean;
 }
 
-export type {
-    Country
-};
+export type { Country };

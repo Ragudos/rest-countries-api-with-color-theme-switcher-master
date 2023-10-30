@@ -10,12 +10,8 @@ interface Props {
 
 const listener = new Observer("");
 
-const Select: React.FC<Props> = ({
-    list,
-    label,
-    id
-}) => {
-    const [activeData, setActiveData] = React.useState<`list-${typeof list[number]}`>();
+const Select: React.FC<Props> = ({ list, label, id }) => {
+    const [activeData, setActiveData] = React.useState<`list-${(typeof list)[number]}`>();
     const [isActive, setIsActive] = React.useState(false);
 
     const containerRef = React.useRef<HTMLDivElement>(null);
@@ -62,23 +58,37 @@ const Select: React.FC<Props> = ({
                 onClick={() => {
                     setIsActive((p) => {
                         return !p;
-                    })
+                    });
                 }}
             >
                 <span id={`${id}-button-label`}>{activeData?.split("list-")[1] || label}</span>
-                <svg aria-label="A chevron arrow pointing down to indicate the open status of the popup that shows a list of regions to filter what country is shown. This rotates by 180 degrees upon activation." className={styles.icon} xmlns="http://www.w3.org/2000/svg" width={16} height={16} fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                <svg
+                    aria-label="A chevron arrow pointing down to indicate the open status of the popup that shows a list of regions to filter what country is shown. This rotates by 180 degrees upon activation."
+                    className={styles.icon}
+                    xmlns="http://www.w3.org/2000/svg"
+                    width={16}
+                    height={16}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={2.5}
+                    stroke="currentColor"
+                >
+                    <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                    />
                 </svg>
             </button>
 
             <div data-hidden={!isActive} id={id} className={styles.listContainer}>
                 <div className={styles.listWrapper}>
-                    <ul className={styles.list} aria-label="List of regions to filter what country to show based on the chosen region">
+                    <ul
+                        className={styles.list}
+                        aria-label="List of regions to filter what country to show based on the chosen region"
+                    >
                         {list.map((item, idx) => (
-                            <li
-                                id={`list-${item}`}
-                                key={item + idx}
-                            >
+                            <li id={`list-${item}`} key={item + idx}>
                                 <button
                                     type="button"
                                     aria-current={`list-${item}` == activeData}
