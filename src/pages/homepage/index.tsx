@@ -1,4 +1,3 @@
-import type { Country } from "@/types";
 import { useLoaderData, type LoaderFunctionArgs, Await, defer } from "react-router-dom";
 import React from "react";
 import styles from "./styles.module.css";
@@ -9,21 +8,17 @@ import Loading from "@/components/country/loading";
 import Select from "@/components/select";
 
 export const loader = async({ request }: LoaderFunctionArgs) => {
-	const response = await fetch("https://restcountries.com/v3.1/all", {
+	return defer({ response: fetch("https://restcountries.com/v3.1/all", {
 		headers: {
 			"Content-Type": "application/json"
 		},
 		signal: request.signal,
 		method: "GET"
-	});
-
-	const countries = response.json();
-	
-	return defer({ countries });
+	}) });
 };
 
 export const Component: React.FC = () => {
-	const { countries } = useLoaderData() as { countries: Country[] };
+	const { response } = useLoaderData() as { response: Promise<Response> };
 
 	return (
 		<React.Fragment>
@@ -38,7 +33,7 @@ export const Component: React.FC = () => {
 
 			<React.Suspense fallback={<Loading />}>
 				<Await
-					resolve={countries}
+					resolve={response}
 					errorElement={<ErrorSectionOfCountries />}
 				>
 					<SectionOfCountries />

@@ -9,10 +9,11 @@ import styles from "./styles.module.css";
 import { splitNumberByThree } from "@/lib/utils";
 
 const SectionOfCountries: React.FC = () => {
-    const countries = useAsyncValue() as Country[];
+    const response = useAsyncValue() as Response;
+    const [countries, setCountries] = React.useState([]);
     const [filteredCountries, setFilteredCountries] = React.useState<
         FuseResult<Country>[] | Country[]
-    >(countries);
+    >([]);
     const [category, setCategory] = React.useState<Country["region"]>();
     const [searchInput, setSearchInput] = React.useState("");
 
@@ -48,11 +49,15 @@ const SectionOfCountries: React.FC = () => {
             setCategory(item);
         });
 
+        response.json().then((data) => {
+            setCountries(data);
+        })
+
         return () => {
             unsubRegionListener();
             unsubSearchListener();
         };
-    }, []);
+    }, [response]);
 
     return (
         <section className={styles.section}>

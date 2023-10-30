@@ -4,23 +4,22 @@ import styles from "./styles.module.css";
 import Error from "./error";
 import Section from "./section";
 import { Country } from "@/types";
+import Loading from "@/components/country/loading";
 
 export const loader = async ({ request, params }: LoaderFunctionArgs) => {
     const { countryName } = params as { countryName: string };
 
-    const response = await fetch(`https://restcountries.com/v3.1/name/${countryName.trim().toLowerCase()}?fullText=true`, {
+    return defer({ response: fetch(`https://restcountries.com/v3.1/name/${countryName.trim().toLowerCase()}?fullText=true`, {
         headers: {
             "Content-Type": "application/json",
         },
         signal: request.signal,
         method: "GET",
-    });
-
-    return defer({ country: response.json() });
+    }) });
 };
 
 export const Component: React.FC = () => {
-    const { country } = useLoaderData() as { country: Country[] };
+    const { response } = useLoaderData() as { response: Promise<Response> };
 
     return (
         <React.Fragment>
@@ -40,9 +39,9 @@ export const Component: React.FC = () => {
                 </button>
             </div>
 
-           <React.Suspense>
+           <React.Suspense fallback={<Loading />}>
                 <Await
-                    resolve={country}
+                    resolve={response}
                     errorElement={<Error />}
                 >
                     <Section />

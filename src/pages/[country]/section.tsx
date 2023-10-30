@@ -5,14 +5,20 @@ import styles from "./section.module.css";
 import React from "react";
 
 const Section: React.FC = () => {
-    const data = useAsyncValue() as Country[];
-    const country = data[0];
-
-    console.log(country);
+    const response = useAsyncValue() as Response;
+    const [country, setCountry] = React.useState<Country>();
+    const [loading, setLoading] = React.useState(true);
+    
+    React.useEffect(() => {
+        response.json().then((data) => {
+            setCountry(data);
+            setLoading(false);
+        });
+    }, [response]);
 
     return (
         <React.Fragment>
-            {!country && (
+            {!country && !loading && (
                 <div className={styles.notFound}>
                     <div>
                         <h1>
