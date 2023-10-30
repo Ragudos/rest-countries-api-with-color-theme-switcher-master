@@ -242,3 +242,7 @@ footer > div {
 
     flex-direction: column;
 }
+
+footer > div a {
+    width: fit-content;
+}

@@ -9,5 +9,5 @@
 
     z-index: 20;
 
-    background-color: hsl(var(--clr-background-offset));
+    background-color: hsl(var(--clr-background));
 }
