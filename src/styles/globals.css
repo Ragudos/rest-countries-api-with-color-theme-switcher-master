@@ -72,8 +72,14 @@ body {
 
 .container {
     max-width: 1400px;
-    padding-inline: 6rem;
+    padding-inline: 4rem;
     margin-inline: auto;
+}
+
+@media only screen and (min-width: 768px) {
+    .container {
+        padding-inline: 6rem;
+    }
 }
 
 a {
@@ -240,6 +246,5 @@ footer > div {
     gap: 1rem;
 
     flex-direction: column;
-    align-items: center;
     justify-content: center;
 }
