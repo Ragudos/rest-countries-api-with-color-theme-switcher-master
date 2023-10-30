@@ -159,11 +159,11 @@ small {
 }
 
 h1 {
-    font-size: clamp(1.5rem, 2px + 2vw, 2rem);
+    font-size: clamp(1.25rem, 2px + 2vw, 1.75rem);
 }
 
 h2 {
-    font-size: clamp(1.25rem, 2px + 2vw, 1.75rem);
+    font-size: clamp(1.175rem, 2px + 2vw, 1.5rem);
 }
 
 .dark svg.fillOnDark {
@@ -236,15 +236,9 @@ ul {
     }
 }
 
-footer {
-    display: grid;
-    place-items: center;
-}
-
 footer > div {
     display: flex;
     gap: 1rem;
 
     flex-direction: column;
-    justify-content: center;
 }
