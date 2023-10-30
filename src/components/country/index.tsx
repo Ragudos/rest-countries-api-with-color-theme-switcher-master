@@ -65,7 +65,7 @@ const SectionOfCountries: React.FC = () => {
 
                     return (
                         <Link
-                            to={`/country/${data.name.common}`}
+                            to={`/country/${data.name.common.replace(/ /g, "%20")}`}
                             aria-label={`Read more information about ${data.name.official}`}
                             title={`Read more information about ${data.name.official}`}
                             className={styles.card}
@@ -74,7 +74,7 @@ const SectionOfCountries: React.FC = () => {
                             <div className={styles.img}>
                                 <img
                                     src={data.flags.png || data.flags.svg}
-                                    alt={data.flags.alt}
+                                    alt={data.flags.alt || "Flag of the" + data.name.official}
                                     width={250}
                                     height={150}
                                     style={{ opacity: "0" }}

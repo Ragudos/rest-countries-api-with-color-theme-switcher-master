@@ -48,7 +48,6 @@ const Select: React.FC<Props> = ({ list, label, id }) => {
         <div className={styles.container} ref={containerRef} id={`${id}-parent-container`}>
             <button
                 type="button"
-                role="combobox"
                 aria-controls={id}
                 aria-haspopup="listbox"
                 aria-activedescendant={activeData}
