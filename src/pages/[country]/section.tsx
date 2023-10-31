@@ -11,7 +11,7 @@ const Section: React.FC = () => {
     
     React.useEffect(() => {
         response.json().then((data) => {
-            setCountry(data);
+            setCountry(data[0]);
             setLoading(false);
         });
     }, [response]);
