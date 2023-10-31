@@ -34,12 +34,12 @@ const Section: React.FC = () => {
                 </div>
             )}
 
-            {country && (
+            {country && !loading && (
                 <section aria-labelledby="country-name" className={styles.container}>
                     <div className={styles.img}>
                         <img
-                            src={country.flags.png || country.flags.svg}
-                            alt={country.flags.alt}
+                            src={country.flags?.png || country.flags?.svg}
+                            alt={country.flags?.alt}
                             width={500}
                             height={400}
                         />
